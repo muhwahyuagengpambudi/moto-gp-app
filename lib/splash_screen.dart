@@ -39,11 +39,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: 545,
                 height: 545,
               ),
-              Image.asset(
-                'images/moto_gp.png',
-                width: 200,
-                height: 200,
-              ),
+              // Image.asset(
+              //   'images/moto_gp.png',
+              //   width: 200,
+              //   height: 200,
+              // ),
             ],
           ),
         ));
