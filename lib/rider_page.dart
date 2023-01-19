@@ -9,15 +9,16 @@ import 'model/rider_model.dart';
 class Rider extends StatelessWidget {
   RiderController riderController = Get.put(RiderController());
 
-  @override
-  void initState() {
-    FirebaseMessaging.onMessage.listen((event) {
-      if (event.notification != null) {
-        //ada notifikasi yang masuk
-        print(event.notification!.title);
-      }
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   FirebaseMessaging.onMessage.listen((event) {
+  //     if (event.notification != null) {
+  //       //ada notifikasi yang masuk
+  //       print(event.notification!.title);
+  //     }
+  //   });
+  // }
 
   @override
   void dependencies() {

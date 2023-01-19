@@ -12,23 +12,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    FirebaseMessaging.onMessage.listen((event) {
-      if (event.notification != null) {
-        //ada notifikasi yang masuk
-        print(event.notification!.title);
-      }
+    FirebaseMessaging _firebaseMessaging =
+        FirebaseMessaging.instance; // Change here
+    _firebaseMessaging.getToken().then((token) {
+      print("token is $token");
     });
-    // FirebaseMessaging _firebaseMessaging =
-    //     FirebaseMessaging.instance; // Change here
-    // _firebaseMessaging.getToken().then((token) {
-    //   print("token is $token");
-    // });
 
     //kita akan mendengarkan notifikasi
     //root project
     super.initState();
 
-//ketika notifikasi di klik dan keadaannya on Terminated
+    //ketika notifikasi di klik dan keadaannya on Terminated
 
     FirebaseMessaging.instance.getInitialMessage().then((message) {
       if (message != null) {
@@ -37,15 +31,15 @@ class _HomePageState extends State<HomePage> {
       }
     });
 
-//ketika notifikasi di klik dan keadaannya on background
-    FirebaseMessaging.onMessageOpenedApp.listen((event) {});
+    //ketika notifikasi di klik dan keadaannya on background
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {});
 
-//ketika on forground
-    FirebaseMessaging.onMessage.listen((event) {
-      if (event.notification != null) {
-        //ada notifikasi yang masuk
-        print(event.notification!.title);
-      }
+    //ketika on forground
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print(message.notification!.body);
+      final snackBar =
+          SnackBar(content: Text(message.notification!.body ?? ""));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     });
   }
 
@@ -96,12 +90,14 @@ class _HomePageState extends State<HomePage> {
               ),
             ];
           },
-          body: TabBarView(
-            children: [
-              Rider(),
-              Icon(Icons.movie),
-              Icon(Icons.games),
-            ],
+          body: Container(
+            child: TabBarView(
+              children: [
+                Rider(),
+                Icon(Icons.movie),
+                Icon(Icons.games),
+              ],
+            ),
           ),
         ),
       ),
@@ -123,6 +119,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return new Container(
+      color: Colors.white,
       child: _tabBar,
     );
   }
