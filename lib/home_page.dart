@@ -1,6 +1,54 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:moto_gp_app/rider_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    FirebaseMessaging.onMessage.listen((event) {
+      if (event.notification != null) {
+        //ada notifikasi yang masuk
+        print(event.notification!.title);
+      }
+    });
+    // FirebaseMessaging _firebaseMessaging =
+    //     FirebaseMessaging.instance; // Change here
+    // _firebaseMessaging.getToken().then((token) {
+    //   print("token is $token");
+    // });
+
+    //kita akan mendengarkan notifikasi
+    //root project
+    super.initState();
+
+//ketika notifikasi di klik dan keadaannya on Terminated
+
+    FirebaseMessaging.instance.getInitialMessage().then((message) {
+      if (message != null) {
+        var _routeName = message.data['route'];
+        Navigator.of(context).pushNamed(_routeName);
+      }
+    });
+
+//ketika notifikasi di klik dan keadaannya on background
+    FirebaseMessaging.onMessageOpenedApp.listen((event) {});
+
+//ketika on forground
+    FirebaseMessaging.onMessage.listen((event) {
+      if (event.notification != null) {
+        //ada notifikasi yang masuk
+        print(event.notification!.title);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +98,7 @@ class HomePage extends StatelessWidget {
           },
           body: TabBarView(
             children: [
-              Icon(Icons.apps),
+              Rider(),
               Icon(Icons.movie),
               Icon(Icons.games),
             ],
