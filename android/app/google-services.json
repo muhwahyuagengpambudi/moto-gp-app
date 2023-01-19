@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "874399880642",
+    "project_id": "motogplist",
+    "storage_bucket": "motogplist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874399880642:android:7cec912e63513a083ef25b",
+        "android_client_info": {
+          "package_name": "com.example.moto_gp_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874399880642-enacumbsl4f654mcc3tns93qhletj6jo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwT-JrX6wykWs72TTcwCmxc3wYO-_9IJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874399880642-enacumbsl4f654mcc3tns93qhletj6jo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
