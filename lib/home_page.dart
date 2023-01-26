@@ -46,13 +46,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(23, 28, 33, 1),
       body: DefaultTabController(
         length: 3,
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                backgroundColor: Color.fromRGBO(23, 28, 33, 1),
+                backgroundColor: Colors.black87,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(30),
@@ -78,8 +79,10 @@ class _HomePageState extends State<HomePage> {
                 pinned: true,
                 delegate: _SliverAppBarDelegate(
                   TabBar(
-                    labelColor: Colors.black87,
-                    unselectedLabelColor: Colors.grey,
+                    padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+                    indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color.fromRGBO(217, 0, 66, 1)),
                     tabs: [
                       new Tab(text: "Riders"),
                       new Tab(text: "Teams"),
@@ -90,14 +93,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ];
           },
-          body: Container(
-            child: TabBarView(
-              children: [
-                Rider(),
-                Icon(Icons.movie),
-                Icon(Icons.games),
-              ],
-            ),
+          body: TabBarView(
+            children: [
+              Rider(),
+              Icon(Icons.movie),
+              Icon(Icons.games),
+            ],
           ),
         ),
       ),
@@ -119,7 +120,6 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return new Container(
-      color: Colors.white,
       child: _tabBar,
     );
   }
