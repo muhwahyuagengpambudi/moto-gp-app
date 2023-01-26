@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: 545,
               ),
               Image.asset(
-                'images/moto_gp.png',
+                'images/moto_gp3.png',
                 width: 200,
                 height: 200,
               ),

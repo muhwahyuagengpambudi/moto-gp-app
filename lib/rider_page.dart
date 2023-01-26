@@ -40,9 +40,13 @@ class Rider extends StatelessWidget {
                 return ListTile(
                   leading: Image.network("http://rizalkalam.my.id/images/" +
                       riderController._riderModel!.riders[index].imgRider!),
-                  title: Text(riderController._riderModel!.riders[index].name!),
+                  title: Text(
+                    riderController._riderModel!.riders[index].name!,
+                    style: TextStyle(color: Colors.white),
+                  ),
                   subtitle: Text(
-                      riderController._riderModel!.riders[index].teamName!),
+                      riderController._riderModel!.riders[index].teamName!,
+                      style: TextStyle(color: Colors.white)),
                 );
               }),
             )),
