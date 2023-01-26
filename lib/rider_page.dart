@@ -38,7 +38,8 @@ class Rider extends StatelessWidget {
               itemCount: riderController._riderModel?.riders.length ?? 0,
               itemBuilder: ((context, index) {
                 return ListTile(
-                  leading: Icon(Icons.account_circle),
+                  leading: Image.network("http://rizalkalam.my.id/images/" +
+                      riderController._riderModel!.riders[index].imgRider!),
                   title: Text(riderController._riderModel!.riders[index].name!),
                   subtitle: Text(
                       riderController._riderModel!.riders[index].teamName!),
@@ -62,8 +63,8 @@ class RiderController extends GetxController {
   getApi() async {
     try {
       isDataLoading(true);
-      http.Response response = await http.get(
-          Uri.parse("https://rizalkalam-my-id.preview-domain.com/api/rider"));
+      http.Response response =
+          await http.get(Uri.parse("http://rizalkalam.my.id/api/rider"));
       if (response.statusCode == 200) {
         ///data successfully
         var result = jsonDecode(response.body);
