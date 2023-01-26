@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(23, 28, 33, 1),
+        backgroundColor: Color.fromRGBO(23, 28, 33, 1),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -39,11 +39,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: 545,
                 height: 545,
               ),
-              // Image.asset(
-              //   'images/moto_gp.png',
-              //   width: 200,
-              //   height: 200,
-              // ),
+              Image.asset(
+                'images/moto_gp.png',
+                width: 200,
+                height: 200,
+              ),
             ],
           ),
         ));
