@@ -54,11 +54,11 @@ class _HomePageState extends State<HomePage> {
             return <Widget>[
               SliverAppBar(
                 backgroundColor: Colors.black87,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(30),
-                  ),
-                ),
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.vertical(
+                //     bottom: Radius.circular(30),
+                //   ),
+                // ),
                 expandedHeight: 200.0,
                 floating: false,
                 pinned: true,
@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                 pinned: true,
                 delegate: _SliverAppBarDelegate(
                   TabBar(
-                    padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+                    padding: EdgeInsets.only(top: 2, left: 10, right: 10),
                     indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color.fromRGBO(217, 0, 66, 1)),

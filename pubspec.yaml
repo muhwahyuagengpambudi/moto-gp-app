@@ -37,6 +37,7 @@ dependencies:
   http:
   firebase_core: ^2.4.1
   firebase_messaging: ^14.2.1
+  google_fonts:
 
 dev_dependencies:
   flutter_test:
