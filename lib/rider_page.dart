@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moto_gp_app/rider_page_loading.dart';
+import 'controller.dart';
 import 'model/rider_model.dart';
 
 class Rider extends StatelessWidget {
@@ -53,7 +54,7 @@ class Rider extends StatelessWidget {
             //   )),
 
             ListView.builder(
-                itemCount: riderController._riderModel?.riders.length ?? 0,
+                itemCount: riderController.RiderModels?.riders.length ?? 0,
                 itemBuilder: (context, index) {
                   Color fromHex(String hexString) {
                     final buffer = StringBuffer();
@@ -83,7 +84,7 @@ class Rider extends StatelessWidget {
                                   children: [
                                     Container(
                                       color: fromHex(riderController
-                                          ._riderModel!
+                                          .RiderModels!
                                           .riders[index]
                                           .mainColor!),
                                       height: double.maxFinite,
@@ -95,7 +96,7 @@ class Rider extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           gradient: new LinearGradient(
                                               colors: [
-                                            fromHex(riderController._riderModel!
+                                            fromHex(riderController.RiderModels!
                                                     .riders[index].mainColor!)
                                                 .withOpacity(0.8),
                                             Colors.black,
@@ -113,7 +114,7 @@ class Rider extends StatelessWidget {
                                 ),
                                 Image.network(
                                     "http://rizalkalam.my.id/images/" +
-                                        riderController._riderModel!
+                                        riderController.RiderModels!
                                             .riders[index].imgFlag!),
                               ],
                             ),
@@ -133,7 +134,7 @@ class Rider extends StatelessWidget {
                                 quarterTurns: 3,
                                 child: Text(
                                     riderController
-                                        ._riderModel!.riders[index].iconRider!,
+                                        .RiderModels!.riders[index].iconRider!,
                                     style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white.withOpacity(0.4),
@@ -146,7 +147,7 @@ class Rider extends StatelessWidget {
                               child: Image.network(
                                 "http://rizalkalam.my.id/images/" +
                                     riderController
-                                        ._riderModel!.riders[index].imgRider!,
+                                        .RiderModels!.riders[index].imgRider!,
                                 height: 211,
                               ),
                             ),
@@ -154,7 +155,7 @@ class Rider extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 20),
                               child: Text(
                                 riderController
-                                    ._riderModel!.riders[index].teamName!,
+                                    .RiderModels!.riders[index].teamName!,
                                 style: TextStyle(
                                   color: Colors.white,
                                   shadows: [
@@ -172,7 +173,7 @@ class Rider extends StatelessWidget {
                               padding: const EdgeInsets.only(bottom: 20),
                               child: Text(
                                   riderController
-                                      ._riderModel!.riders[index].name!,
+                                      .RiderModels!.riders[index].name!,
                                   style: TextStyle(
                                     color: Colors.white,
                                     shadows: [
@@ -192,37 +193,5 @@ class Rider extends StatelessWidget {
                   );
                 },
               )));
-  }
-}
-
-class RiderController extends GetxController {
-  RiderModel? _riderModel;
-  var isDataLoading = false.obs;
-
-  @override
-  Future<void> onInit() async {
-    super.onInit();
-    getApi();
-  }
-
-  getApi() async {
-    try {
-      isDataLoading(true);
-      http.Response response =
-          await http.get(Uri.parse("http://rizalkalam.my.id/api/rider/all"));
-      if (response.statusCode == 200) {
-        ///data successfully
-        var result = jsonDecode(response.body);
-
-        _riderModel = RiderModel.fromJson(result);
-      } else {
-        ///error
-      }
-    } catch (e) {
-      log('Error while getting data is $e');
-      print('Error while getting data is $e');
-    } finally {
-      isDataLoading(false);
-    }
   }
 }
