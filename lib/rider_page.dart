@@ -195,7 +195,7 @@ class RiderController extends GetxController {
     try {
       isDataLoading(true);
       http.Response response =
-          await http.get(Uri.parse("http://rizalkalam.my.id/api/rider"));
+          await http.get(Uri.parse("http://rizalkalam.my.id/api/rider/all"));
       if (response.statusCode == 200) {
         ///data successfully
         var result = jsonDecode(response.body);
