@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moto_gp_app/rider_page_loading.dart';
 import 'model/rider_model.dart';
 
 class Rider extends StatelessWidget {
@@ -32,9 +33,7 @@ class Rider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Obx(() => riderController.isDataLoading.value
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
+            ? RiderPageLoading()
             :
             // : ListView.builder(
             //     itemCount: riderController._riderModel?.riders.length ?? 0,
@@ -56,6 +55,14 @@ class Rider extends StatelessWidget {
             ListView.builder(
                 itemCount: riderController._riderModel?.riders.length ?? 0,
                 itemBuilder: (context, index) {
+                  Color fromHex(String hexString) {
+                    final buffer = StringBuffer();
+                    if (hexString.length == 6 || hexString.length == 7)
+                      buffer.write('ff');
+                    buffer.write(hexString.replaceFirst('#', ''));
+                    return Color(int.parse(buffer.toString(), radix: 16));
+                  }
+
                   return Padding(
                     padding:
                         const EdgeInsets.only(left: 50, right: 50, bottom: 50),
@@ -75,7 +82,10 @@ class Rider extends StatelessWidget {
                                 Row(
                                   children: [
                                     Container(
-                                      color: Colors.blue.withOpacity(0.8),
+                                      color: fromHex(riderController
+                                          ._riderModel!
+                                          .riders[index]
+                                          .mainColor!),
                                       height: double.maxFinite,
                                       width: 7,
                                     ),
@@ -85,7 +95,9 @@ class Rider extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           gradient: new LinearGradient(
                                               colors: [
-                                            Colors.blue,
+                                            fromHex(riderController._riderModel!
+                                                    .riders[index].mainColor!)
+                                                .withOpacity(0.8),
                                             Colors.black,
                                           ],
                                               stops: [
@@ -123,6 +135,8 @@ class Rider extends StatelessWidget {
                                     riderController
                                         ._riderModel!.riders[index].iconRider!,
                                     style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white.withOpacity(0.4),
                                       fontSize: 30,
                                     )),
                               ),
