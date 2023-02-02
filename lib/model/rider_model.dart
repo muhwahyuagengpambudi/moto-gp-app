@@ -5,12 +5,12 @@ class RiderModel {
   late final List<Riders> riders;
 
   RiderModel.fromJson(Map<String, dynamic> json) {
-    riders = List.from(json['riders']).map((e) => Riders.fromJson(e)).toList();
+    riders = List.from(json['Riders']).map((e) => Riders.fromJson(e)).toList();
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['riders'] = riders.map((e) => e.toJson()).toList();
+    _data['Riders'] = riders.map((e) => e.toJson()).toList();
     return _data;
   }
 }
@@ -25,15 +25,17 @@ class Riders {
     required this.imgFlag,
     required this.imgRider,
     required this.iconRider,
+    required this.mainColor,
   });
-  int? id;
-  int? teamId;
-  String? name;
-  int? number;
-  String? teamName;
-  String? imgFlag;
-  String? imgRider;
-  String? iconRider;
+  late final int id;
+  late final int teamId;
+  late final String name;
+  late final int number;
+  late final String teamName;
+  late final String imgFlag;
+  late final String imgRider;
+  late final String iconRider;
+  late final String mainColor;
 
   Riders.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -44,6 +46,7 @@ class Riders {
     imgFlag = json['img_flag'];
     imgRider = json['img_rider'];
     iconRider = json['icon_rider'];
+    mainColor = json['main_color'];
   }
 
   Map<String, dynamic> toJson() {
@@ -56,6 +59,7 @@ class Riders {
     _data['img_flag'] = imgFlag;
     _data['img_rider'] = imgRider;
     _data['icon_rider'] = iconRider;
+    _data['main_color'] = mainColor;
     return _data;
   }
 }
