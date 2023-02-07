@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:http/http.dart' as http;
 import 'model/rider_model.dart';
 
 class RiderController extends GetxController {
-  RiderModel? _riderModel;
+  RiderModel? RiderModels;
   var isDataLoading = false.obs;
 
   @override
@@ -18,13 +19,13 @@ class RiderController extends GetxController {
   getApi() async {
     try {
       isDataLoading(true);
-      http.Response response = await http.get(
-          Uri.parse("https://rizalkalam-my-id.preview-domain.com/api/rider"));
+      http.Response response =
+          await http.get(Uri.parse("http://rizalkalam.my.id/api/rider/all"));
       if (response.statusCode == 200) {
         ///data successfully
         var result = jsonDecode(response.body);
 
-        _riderModel = RiderModel.fromJson(result);
+        RiderModels = RiderModel.fromJson(result);
       } else {
         ///error
       }
