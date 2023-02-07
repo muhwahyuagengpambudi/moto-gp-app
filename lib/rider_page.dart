@@ -112,10 +112,9 @@ class Rider extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Image.network(
-                                    "http://rizalkalam.my.id/images/" +
-                                        riderController.RiderModels!
-                                            .riders[index].imgFlag!),
+                                Image.network("http://rizalkalam.fun/images/" +
+                                    riderController
+                                        .RiderModels!.riders[index].imgFlag!),
                               ],
                             ),
                             Container(
@@ -145,7 +144,7 @@ class Rider extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(right: 60),
                               child: Image.network(
-                                "http://rizalkalam.my.id/images/" +
+                                "http://rizalkalam.fun/images/" +
                                     riderController
                                         .RiderModels!.riders[index].imgRider!,
                                 height: 211,
