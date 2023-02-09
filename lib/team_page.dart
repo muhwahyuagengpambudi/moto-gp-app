@@ -29,7 +29,7 @@ class Team extends StatelessWidget {
         child: Obx(() => teamController.isDataLoading.value
             ? TeamsPageLoading()
             : ListView.builder(
-                itemCount: teamController.TeamModels?.teams?.length ?? 0,
+                itemCount: teamController.TeamModels?.data?.length ?? 0,
                 itemBuilder: (context, index) {
                   Color fromHex(String hexString) {
                     final buffer = StringBuffer();
@@ -54,7 +54,7 @@ class Team extends StatelessWidget {
                             child: Image.network(
                               "http://rizalkalam.fun/images/" +
                                   teamController
-                                      .TeamModels!.teams![index].imgBike!,
+                                      .TeamModels!.data![index].imgBike!,
                               fit: BoxFit.cover,
                               height: double.infinity,
                             ),
@@ -63,7 +63,7 @@ class Team extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Container(
                               color: fromHex(teamController
-                                  .TeamModels!.teams![index].mainColor!),
+                                  .TeamModels!.data![index].mainColor!),
                               height: double.maxFinite,
                               width: 7,
                             ),
@@ -90,7 +90,7 @@ class Team extends StatelessWidget {
                                 children: [
                                   Text(
                                     teamController
-                                        .TeamModels!.teams![index].name!,
+                                        .TeamModels!.data![index].name!,
                                     style: GoogleFonts.poppins(
                                         color: Colors.white,
                                         fontSize: 20,
@@ -102,7 +102,8 @@ class Team extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        "haha",
+                                        teamController.TeamModels!.data![index]
+                                            .rider![0].name!,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       Padding(
@@ -115,7 +116,8 @@ class Team extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        "haha",
+                                        teamController.TeamModels!.data![index]
+                                            .rider![1].name!,
                                         style: TextStyle(color: Colors.white),
                                       )
                                     ],

@@ -22,10 +22,10 @@ class RiderController extends GetxController {
     try {
       isDataLoading(true);
       http.Response responseRider =
-          await http.get(Uri.parse("http://rizalkalam.fun/api/rider/all"));
+          await http.get(Uri.parse("http://rizalkalam.fun/api/rider"));
 
       http.Response responseTeam =
-          await http.get(Uri.parse("http://rizalkalam.fun/api/team/all"));
+          await http.get(Uri.parse("http://rizalkalam.fun/api/team"));
 
       if (responseRider.statusCode == 200 || responseTeam.statusCode == 200) {
         ///data successfully
