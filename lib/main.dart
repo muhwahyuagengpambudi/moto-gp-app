@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:moto_gp_app/home_page.dart';
 import 'package:moto_gp_app/splash_screen.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'moto_gp_app',
-      home: SplashScreen(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

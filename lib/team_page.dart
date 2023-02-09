@@ -1,3 +1,6 @@
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
 import 'dart:convert';
 import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -7,10 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moto_gp_app/rider_page_loading.dart';
 import 'controller.dart';
-import 'model/rider_model.dart';
+import 'model/team_model.dart';
 
-class Rider extends StatelessWidget {
-  RiderController riderController = Get.put(RiderController());
+class Team extends StatelessWidget {
+  RiderController teamController = Get.put(RiderController());
 
   @override
   void dependencies() {
@@ -22,10 +25,10 @@ class Rider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Obx(() => riderController.isDataLoading.value
+        child: Obx(() => teamController.isDataLoading.value
             ? RiderPageLoading()
             : ListView.builder(
-                itemCount: riderController.RiderModels?.riders.length ?? 0,
+                itemCount: teamController.TeamModels?.teams?.length ?? 0,
                 itemBuilder: (context, index) {
                   Color fromHex(String hexString) {
                     final buffer = StringBuffer();
@@ -54,10 +57,8 @@ class Rider extends StatelessWidget {
                                 Row(
                                   children: [
                                     Container(
-                                      color: fromHex(riderController
-                                          .RiderModels!
-                                          .riders[index]
-                                          .mainColor!),
+                                      color: fromHex(teamController.TeamModels!
+                                          .teams![index].mainColor!),
                                       height: double.maxFinite,
                                       width: 7,
                                     ),
@@ -67,8 +68,8 @@ class Rider extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           gradient: new LinearGradient(
                                               colors: [
-                                            fromHex(riderController.RiderModels!
-                                                    .riders[index].mainColor!)
+                                            fromHex(teamController.TeamModels!
+                                                    .teams![index].mainColor!)
                                                 .withOpacity(0.8),
                                             Colors.black,
                                           ],
@@ -83,9 +84,6 @@ class Rider extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Image.network("http://rizalkalam.fun/images/" +
-                                    riderController
-                                        .RiderModels!.riders[index].imgFlag!),
                               ],
                             ),
                             Container(
@@ -97,53 +95,20 @@ class Rider extends StatelessWidget {
                                 Colors.black.withOpacity(0.1)
                               ])),
                             ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 12, top: 2),
-                              alignment: Alignment.topLeft,
-                              child: RotatedBox(
-                                quarterTurns: 3,
-                                child: Text(
-                                    riderController
-                                        .RiderModels!.riders[index].iconRider!,
-                                    style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white.withOpacity(0.4),
-                                      fontSize: 30,
-                                    )),
-                              ),
-                            ),
                             Padding(
                               padding: const EdgeInsets.only(right: 60),
                               child: Image.network(
                                 "http://rizalkalam.fun/images/" +
-                                    riderController
-                                        .RiderModels!.riders[index].imgRider!,
-                                height: 211,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20),
-                              child: Text(
-                                riderController
-                                    .RiderModels!.riders[index].teamName!,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 5, // shadow blur
-                                      color: Colors.black, // shadow color
-                                      offset: Offset(2,
-                                          2), // how much shadow will be shown
-                                    ),
-                                  ],
-                                ),
+                                    teamController
+                                        .TeamModels!.teams![index].imgBike!,
+                                height: 150,
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 20),
                               child: Text(
-                                  riderController
-                                      .RiderModels!.riders[index].name!,
+                                  teamController
+                                      .TeamModels!.teams![index].name!,
                                   style: TextStyle(
                                     color: Colors.white,
                                     shadows: [

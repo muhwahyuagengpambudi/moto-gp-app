@@ -1,6 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:moto_gp_app/rider_page.dart';
+import 'package:moto_gp_app/rider_page_loading.dart';
+import 'package:moto_gp_app/team_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -96,7 +98,7 @@ class _HomePageState extends State<HomePage> {
           body: TabBarView(
             children: [
               Rider(),
-              Icon(Icons.movie),
+              Team(),
               Icon(Icons.games),
             ],
           ),
