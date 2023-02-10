@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'moto_gp_app',
+      title: 'MotoGp',
       home: HomePage(),
       debugShowCheckedModeBanner: false,
     );

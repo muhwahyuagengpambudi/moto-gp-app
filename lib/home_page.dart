@@ -1,5 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:moto_gp_app/rider_page.dart';
 import 'package:moto_gp_app/rider_page_loading.dart';
 import 'package:moto_gp_app/team_page.dart';
@@ -81,6 +82,8 @@ class _HomePageState extends State<HomePage> {
                 pinned: true,
                 delegate: _SliverAppBarDelegate(
                   TabBar(
+                    labelStyle: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500, fontSize: 13),
                     padding: EdgeInsets.only(top: 2, left: 10, right: 10),
                     indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -99,7 +102,15 @@ class _HomePageState extends State<HomePage> {
             children: [
               Rider(),
               Team(),
-              Icon(Icons.games),
+              Center(
+                child: Text(
+                  "Kamu Nanyae ?",
+                  style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500),
+                ),
+              )
             ],
           ),
         ),

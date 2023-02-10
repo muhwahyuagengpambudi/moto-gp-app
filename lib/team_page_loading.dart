@@ -16,7 +16,7 @@ class _TeamsPageLoadingState extends State<TeamsPageLoading> {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(left: 45, right: 45, bottom: 45),
-          child: ShimmerWidget(height: 211, width: 310),
+          child: ShimmerWidget(height: 260, width: 310),
         );
       },
     );

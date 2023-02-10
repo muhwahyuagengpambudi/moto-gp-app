@@ -126,7 +126,7 @@ class Rider extends StatelessWidget {
                               child: Text(
                                 riderController
                                     .RiderModels!.riders[index].teamName!,
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   color: Colors.white,
                                   shadows: [
                                     Shadow(
@@ -144,7 +144,7 @@ class Rider extends StatelessWidget {
                               child: Text(
                                   riderController
                                       .RiderModels!.riders[index].name!,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     color: Colors.white,
                                     shadows: [
                                       Shadow(

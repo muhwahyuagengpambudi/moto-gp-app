@@ -1,6 +1,5 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 import 'dart:convert';
 import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -104,7 +103,8 @@ class Team extends StatelessWidget {
                                       Text(
                                         teamController.TeamModels!.data![index]
                                             .rider![0].name!,
-                                        style: TextStyle(color: Colors.white),
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.white),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
@@ -118,7 +118,8 @@ class Team extends StatelessWidget {
                                       Text(
                                         teamController.TeamModels!.data![index]
                                             .rider![1].name!,
-                                        style: TextStyle(color: Colors.white),
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.white),
                                       )
                                     ],
                                   ),
