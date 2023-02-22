@@ -24,10 +24,18 @@ class Team extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double WithScreen = MediaQuery.of(context).size.width;
+    isMobile(BuildContext context) {
+      return WithScreen < 550;
+    }
+
     return Center(
         child: Obx(() => teamController.isDataLoading.value
             ? TeamsPageLoading()
-            : ListView.builder(
+            : GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: isMobile(context) ? 1 : 2,
+                    childAspectRatio: isMobile(context) ? 1.30 : 1.30),
                 itemCount: teamController.TeamModels?.data?.length ?? 0,
                 itemBuilder: (context, index) {
                   Color fromHex(String hexString) {
