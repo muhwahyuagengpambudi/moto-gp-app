@@ -1,6 +1,5 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 import 'dart:convert';
 import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -25,10 +24,18 @@ class Team extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double WithScreen = MediaQuery.of(context).size.width;
+    isMobile(BuildContext context) {
+      return WithScreen < 550;
+    }
+
     return Center(
         child: Obx(() => teamController.isDataLoading.value
             ? TeamsPageLoading()
-            : ListView.builder(
+            : GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: isMobile(context) ? 1 : 2,
+                    childAspectRatio: isMobile(context) ? 1.30 : 1.30),
                 itemCount: teamController.TeamModels?.data?.length ?? 0,
                 itemBuilder: (context, index) {
                   Color fromHex(String hexString) {
@@ -104,7 +111,8 @@ class Team extends StatelessWidget {
                                       Text(
                                         teamController.TeamModels!.data![index]
                                             .rider![0].name!,
-                                        style: TextStyle(color: Colors.white),
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.white),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
@@ -118,7 +126,8 @@ class Team extends StatelessWidget {
                                       Text(
                                         teamController.TeamModels!.data![index]
                                             .rider![1].name!,
-                                        style: TextStyle(color: Colors.white),
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.white),
                                       )
                                     ],
                                   ),
